@@ -1,28 +1,50 @@
 import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { useAuthState, useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import Social from '../Social/Social';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
+    const emailRef = useRef('');
+    const passwordRef = useRef('');
+
     const [
         signInWithEmailAndPassword,
         user,
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
+    const location = useLocation();
     const navigate = useNavigate();
-    const emailRef = useRef('');
-    const passwordRef = useRef('');
+    let from = location.state?.from?.pathname || "/";
+
     if (user) {
-        navigate('/home');
+        // console.log(user?.user?.email);
+        navigate(from, { replace: true });
     }
+    let errorElement;
     const handleSubmit = event => {
         event.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
         signInWithEmailAndPassword(email, password);
+        if (email !== user?.user?.email) {
+            errorElement = <p className='text-danger'>Error:'Email don't match'</p>
+        }
+    }
+    const forgetPassword = async () => {
+        const email = emailRef.current.value;
+        if (email) {
+            await sendPasswordResetEmail(email);
+            toast('Sent email');
+        }
+        else {
+            toast('Please enter your email');
+        }
     }
     return (
         <div>
@@ -35,9 +57,8 @@ const Login = () => {
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Control ref={passwordRef} type="password" placeholder="Password" required />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                        <Form.Check type="checkbox" label="Check me out" />
-                    </Form.Group>
+                    <p className='mt-2 '><Link to="/login" onClick={forgetPassword} className='text-decoration-none'>forget password?</Link></p>
+                    {errorElement}
                     <div className='d-flex justify-content-center align-items-center'>
                         <Button variant="primary" type="submit" className='px-5'>
                             Login
@@ -46,6 +67,7 @@ const Login = () => {
                 </Form>
                 <p className='text-center mt-2 '>Don't have an account?<Link to="/register" className='text-decoration-none'>Create One</Link></p>
                 <Social></Social>
+                <ToastContainer />
             </div>
         </div>
     );

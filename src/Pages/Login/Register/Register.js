@@ -1,28 +1,38 @@
-import React, { useRef } from 'react';
+import { async } from '@firebase/util';
+import React, { useRef, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import Social from '../Social/Social';
 
 const Register = () => {
+    const nameRef = useRef('');
+    const emailRef = useRef('');
+    const passwordRef = useRef('');
+    const [agree, setAgree] = useState(false);
     const [
         createUserWithEmailAndPassword,
         user,
         loading,
         error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+    const location = useLocation();
     const navigate = useNavigate();
-    const emailRef = useRef('');
-    const passwordRef = useRef('');
+    let from = location.state?.from?.pathname || "/";
+
     if (user) {
-        navigate('/home');
+        navigate(from, { replace: true });
     }
-    const handleSubmit = event => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        createUserWithEmailAndPassword(email, password);
+        const name = nameRef.current.value;
+        await createUserWithEmailAndPassword(email, password);
+        await updateProfile({ displayName: name });
+
     }
     return (
         <div>
@@ -30,7 +40,7 @@ const Register = () => {
                 <h2 className='text-primary text-center'>Please Register</h2>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3 mt-2" controlId="formBasicText">
-                        <Form.Control type="text" placeholder="Your name" />
+                        <Form.Control ref={nameRef} type="text" placeholder="Your name" />
                     </Form.Group>
                     <Form.Group className="mb-3 mt-2" controlId="formBasicEmail">
                         <Form.Control ref={emailRef} type="email" placeholder="Enter email" required />
@@ -39,10 +49,10 @@ const Register = () => {
                         <Form.Control ref={passwordRef} type="password" placeholder="Password" required />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                        <Form.Check type="checkbox" label="Check me out" />
+                        <Form.Check onClick={() => setAgree(!agree)} type="checkbox" className={agree ? 'text-primary' : 'text-danger'} label="Accept all Terms and Condition" />
                     </Form.Group>
                     <div className='d-flex justify-content-center align-items-center'>
-                        <Button variant="primary" type="submit" className='px-5'>
+                        <Button disabled={!agree} variant="primary" type="submit" className='px-5'>
                             Register
                         </Button>
                     </div>

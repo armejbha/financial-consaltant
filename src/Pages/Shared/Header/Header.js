@@ -19,7 +19,7 @@ const Header = () => {
                     </Nav>
                     <Nav>
                         <Nav.Link as={Link} to="/about">About</Nav.Link>
-                        <Nav.Link eventKey={2} as={Link} to="/memes">
+                        <Nav.Link eventKey={2} as={Link} to="/login">
                             Login
                         </Nav.Link>
                     </Nav>

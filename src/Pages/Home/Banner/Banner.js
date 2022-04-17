@@ -1,5 +1,5 @@
 import React from 'react';
-import img from '../../../images/banner/banner1.jpg';
+import img from '../../../images/banner/banner.jpg';
 const Banner = () => {
     return (
         <div className='mx-4 md:mx-12 mt-24'>

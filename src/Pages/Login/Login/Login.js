@@ -1,16 +1,17 @@
 import React, { useRef } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, Spinner } from 'react-bootstrap';
 import { useAuthState, useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import Social from '../Social/Social';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Loading from '../../Shared/Loading/Loading';
 
 const Login = () => {
     const emailRef = useRef('');
     const passwordRef = useRef('');
-
+    let errorElement;
     const [
         signInWithEmailAndPassword,
         user,
@@ -21,20 +22,25 @@ const Login = () => {
     const location = useLocation();
     const navigate = useNavigate();
     let from = location.state?.from?.pathname || "/";
-
+    if (loading || sending) {
+        return <Loading></Loading>
+    }
+    if (error) {
+        errorElement = <p className='text-danger'>Error: {error?.message}</p>
+    }
     if (user) {
         // console.log(user?.user?.email);
         navigate(from, { replace: true });
     }
-    let errorElement;
+
     const handleSubmit = event => {
         event.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
         signInWithEmailAndPassword(email, password);
-        if (email !== user?.user?.email) {
-            errorElement = <p className='text-danger'>Error:'Email don't match'</p>
-        }
+        // if (email !== user?.user?.email) {
+        //     errorElement = <p className='text-danger'>Error:'Email don't match'</p>
+        // }
     }
     const forgetPassword = async () => {
         const email = emailRef.current.value;

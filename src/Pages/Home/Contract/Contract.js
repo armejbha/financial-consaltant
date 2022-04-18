@@ -14,20 +14,20 @@ const Contract = () => {
                                 <h2 className='text-center mb-5'>Contact Me</h2>
                                 <div className="form-group">
                                     {/* <label for="name">Name</label> */}
-                                    <input type="text" name="name" id="fullname" className="form-control w-75 mx-auto bg-secondary py-3 rounded-pill ps-5" placeholder='Name' />
+                                    <input type="text" name="name" id="fullname" className="form-control w-75 mx-auto bg-one py-3 rounded-pill ps-5" placeholder='Name' />
                                 </div>
                                 <div className="form-group mt-3">
                                     {/* <label for="email">Email</label> */}
-                                    <input type="text" name="email" id="email" className="form-control w-75 mx-auto bg-secondary py-3 rounded-pill ps-5" placeholder='Email' />
+                                    <input type="text" name="email" id="email" className="form-control w-75 mx-auto bg-one py-3 rounded-pill ps-5" placeholder='Email' />
                                 </div>
                                 <div className="form-group mt-3">
                                     {/* <label for="text">subject</label> */}
-                                    <input type="text" name="subject" id="email" className="form-control w-75 mx-auto bg-secondary py-3 rounded-pill ps-5" placeholder='Subject' />
+                                    <input type="text" name="subject" id="email" className="form-control w-75 mx-auto bg-one py-3 rounded-pill ps-5" placeholder='Subject' />
                                 </div>
                                 <div className="form-group mt-3">
 
                                     {/* <label for="message">Message</label> */}
-                                    <textarea name="msg" msg cols="30" rows="5" id="" className="form-control w-75 mx-auto bg-secondary py-3 rounded-3 ps-5" placeholder='Message'></textarea>
+                                    <textarea name="msg" msg cols="30" rows="5" id="" className="form-control w-75 mx-auto bg-one py-3 rounded-3 ps-5" placeholder='Message'></textarea>
                                 </div>
 
                                 {/* <div className="form-group">

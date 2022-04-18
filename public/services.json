@@ -3,42 +3,42 @@
         "id": 1,
         "name": "Financial Planning",
         "price": "300",
-        "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
+        "description": "Everyone have a common problem how to solve financial problem.My this service i am provided how to solve financial problem .How to implement your planning.",
         "img": "https://i.ibb.co/7rySWQm/service-1.jpg"
     },
     {
         "id": 2,
         "name": "Investment Management",
         "price": "100",
-        "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
+        "description": "Investment is very important if you want to make more money.For this your should know how to investment properly and how to manage.This service i provided that.",
         "img": "https://i.ibb.co/c3TY1xW/5867.jpg"
     },
     {
         "id": 3,
         "name": "Taxes Planning",
         "price": "150",
-        "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
+        "description": "If you are a business man and you face problem for your govt taxes.This service is for you.This service you will learn how to solve this matter easily and how to a good planning.",
         "img": "https://i.ibb.co/kVnyvnf/6573.png"
     },
     {
         "id": 4,
         "name": "Business Loan",
         "price": "180",
-        "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
+        "description": "For business you should get bank loan and it implement your business.That work is not easy.Solving this matter we are provided a service that would be very helpful for your business.",
         "img": "https://i.ibb.co/5R2GQ4J/Tiny-people-depositing-or-taking-money-from-government-bank.jpg"
     },
     {
         "id": 5,
         "name": "Insurance Consulting",
         "price": "100",
-        "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
+        "description": "Every product should have insurance.How to Insurance your product for this we are provided insurance consulting.It will be very helping for your product get insurance.",
         "img": "https://i.ibb.co/nmcmSgC/11205.jpg"
     },
     {
         "id": 6,
         "name": "Retirement Planning",
         "price": "300",
-        "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa",
+        "description": "Many people face a problem when they are retire.They think how perfectly use their retirement money.Our retirement planning service solve this problem easily.",
         "img": "https://i.ibb.co/Xyv4frN/5183268.png"
     }
 ]

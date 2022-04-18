@@ -8,7 +8,7 @@ const About = () => {
             </div>
             <div>
                 <h3 className='text-center'>Abdur Rahim</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia veniam, ad quisquam reiciendis ipsam, aperiam esse, maxime distinctio aliquid iste laboriosam quasi placeat animi accusamus ex possimus unde tempore asperiores!</p>
+                <p className='text-align'>Here i don't write my personal information.I am write what is my goal.Now my goal is become a junior web developer.That why i am admitted Web Development course with Jhankar Mahbub course.Along with this course i am trying a lot of myself.I am doing home work,assigment and other following instruction.I am optimistic one day I will be able to reach my goal.</p>
             </div>
         </div>
     );

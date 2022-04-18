@@ -1,0 +1,13 @@
+.NotFound-main {
+    width: 200px;
+    margin: 150px auto;
+    text-align: center;
+    background-color: rgb(171, 146, 146);
+    padding: 30px 40px;
+    border-radius: 10px;
+}
+
+.NotFound-main .icon {
+    font-size: 30px;
+    color: rgb(139, 55, 22);
+}

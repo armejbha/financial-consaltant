@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
-import { Button, Form, Spinner } from 'react-bootstrap';
-import { useAuthState, useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { Button, Form } from 'react-bootstrap';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import Social from '../Social/Social';
@@ -26,10 +26,9 @@ const Login = () => {
         return <Loading></Loading>
     }
     if (error) {
-        errorElement = <p className='text-danger'>Error: {error?.message}</p>
+        errorElement = <p className='text-danger'>Enter email address and password don't match</p>
     }
     if (user) {
-        // console.log(user?.user?.email);
         navigate(from, { replace: true });
     }
 
@@ -38,11 +37,8 @@ const Login = () => {
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
         signInWithEmailAndPassword(email, password);
-        // if (email !== user?.user?.email) {
-        //     errorElement = <p className='text-danger'>Error:'Email don't match'</p>
-        // }
     }
-    const forgetPassword = async () => {
+    const resetPassword = async () => {
         const email = emailRef.current.value;
         if (email) {
             await sendPasswordResetEmail(email);
@@ -63,7 +59,7 @@ const Login = () => {
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Control ref={passwordRef} type="password" placeholder="Password" required />
                     </Form.Group>
-                    <p className='mt-2 '><Link to="/login" onClick={forgetPassword} className='text-decoration-none'>forget password?</Link></p>
+                    <p className='mt-2 '><Link to="/login" onClick={resetPassword} className='text-decoration-none'>reset password?</Link></p>
                     {errorElement}
                     <div className='d-flex justify-content-center align-items-center'>
                         <Button variant="primary" type="submit" className='px-5'>

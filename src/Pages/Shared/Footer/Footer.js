@@ -6,8 +6,8 @@ const Footer = () => {
     const today = new Date();
     const year = today.getFullYear()
     return (
-        <div className='bg-primary py-5'>
-            <h3 className='text-center'>Follow On Me</h3>
+        <div className='bg-primary py-5 mt-5'>
+            <h3 className='text-center'>Follow Me On</h3>
             <div className='d-flex justify-content-center align-items-center mt-4'>
                 <img style={{ height: '30px' }} className='me-4' src={social1} alt="" />
                 <img className='me-4' src={social2} alt="" />

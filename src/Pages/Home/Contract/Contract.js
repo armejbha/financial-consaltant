@@ -3,12 +3,12 @@ import photo from '../../../images/contract/contact1.png'
 const Contract = () => {
     return (
         <div className='container my-5'>
-            <div className='w-75 mx-auto d-block'>
+            <div className='w-100 px-4 mx-auto d-block'>
                 <div className='row shadow-lg rounded-3 p-5'>
-                    <div className='col-4 d-flex justify-content-center align-items-center'>
+                    <div className='col-sm-12 col-lg-4 d-flex justify-content-center align-items-center'>
                         <img className='w-75 ' src={photo} alt="" />
                     </div>
-                    <div className="col-8">
+                    <div className="col-sm-12 col-lg-8">
                         <div className=''>
                             <form>
                                 <h2 className='text-center mb-5'>Contact Me</h2>
